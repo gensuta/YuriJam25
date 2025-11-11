@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://b4o505vxnhlib"]
+[gd_scene load_steps=6 format=4 uid="uid://b4o505vxnhlib"]
 
 [ext_resource type="PackedScene" uid="uid://dcesn0ikqem5u" path="res://scenes/player.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://c1ja3x2kmjgux" path="res://sprites/Terrain (16 x 16).png" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://c3tbb5v6a7yh6" path="res://icon.svg" id="3_h2yge"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("2_0xm2m")
@@ -60,6 +61,26 @@ sources/0 = SubResource("TileSetAtlasSource_h2yge")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_ig7tw")]
 position = Vector2(60, 514)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(250, -100)
+
+[node name="UI" type="Control" parent="CharacterBody2D/Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -574.0
+offset_top = -320.0
+offset_right = -259.0
+offset_bottom = -241.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CharacterBody2D/Camera2D/UI"]
+layout_mode = 0
+offset_right = 316.0
+offset_bottom = 128.0
+texture_under = ExtResource("3_h2yge")
+texture_over = ExtResource("3_h2yge")
+texture_progress = ExtResource("3_h2yge")
+tint_under = Color(0.22453767, 0.19754893, 0.15736336, 1)
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 use_parent_material = true
